@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Notificacion implements Serializable{
 
     @Id
-    private int id;
+    private Long id;
     
     @Column(nullable = false)
     private String mensaje;
@@ -18,8 +18,20 @@ public class Notificacion implements Serializable{
     @ManyToOne
     @JoinColumn(name = "LISTA")
     private Lista lista;
+    
+    private String estado;
+    
+    public String getEstado() {
+        
+        return estado;
+    }
+    
+    public void setEstado(String  e) {
+        
+        this.estado = e;
+    }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -38,7 +50,7 @@ public class Notificacion implements Serializable{
 
     
     
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -58,7 +70,7 @@ public class Notificacion implements Serializable{
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 47 * hash + this.id;
+        hash = (int) (47 * hash + this.id);
         hash = 47 * hash + Objects.hashCode(this.mensaje);
         hash = 47 * hash + Objects.hashCode(this.tipo);
         hash = 47 * hash + Objects.hashCode(this.lista);
