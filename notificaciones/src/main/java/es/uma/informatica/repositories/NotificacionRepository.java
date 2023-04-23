@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package es.uma.informatica.repositories;
-import es.uma.informatica.Notificacion;
+import es.uma.informatica.entidades.Notificacion;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

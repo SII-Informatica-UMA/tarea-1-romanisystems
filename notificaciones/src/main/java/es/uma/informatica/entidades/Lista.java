@@ -1,4 +1,4 @@
-package es.uma.informatica;
+package es.uma.informatica.entidades;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
