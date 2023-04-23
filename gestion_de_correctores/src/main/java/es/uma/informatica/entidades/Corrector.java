@@ -1,4 +1,4 @@
-package es.uma.informatica;
+package es.uma.informatica.entidades;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.*;
@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Corrector implements Serializable{
 
     @Id
-    private int id;
+    private Long id;
     
     @Column(nullable = false)
     private String nombre;
@@ -31,7 +31,7 @@ public class Corrector implements Serializable{
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 53 * hash + this.id;
+        hash = (int) (53 * hash + this.id);
         hash = 53 * hash + Objects.hashCode(this.nombre);
         hash = 53 * hash + Objects.hashCode(this.apellidos);
         hash = 53 * hash + Objects.hashCode(this.correoElectronico);
@@ -74,11 +74,11 @@ public class Corrector implements Serializable{
         return Objects.equals(this.materia, other.materia);
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

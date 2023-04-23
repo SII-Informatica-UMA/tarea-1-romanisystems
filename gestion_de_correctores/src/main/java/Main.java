@@ -1,4 +1,4 @@
-package es.uma.informatica;
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
