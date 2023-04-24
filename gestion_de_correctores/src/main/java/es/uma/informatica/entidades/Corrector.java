@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class Corrector implements Serializable{
 
     @Id
+    @GeneratedValue
     private Long id;
     
     @Column(nullable = false)
@@ -23,6 +24,25 @@ public class Corrector implements Serializable{
     @ManyToOne
     @JoinColumn(name = "MATERIA")
     private Materia materia;
+    
+    public Corrector (Long id, String nombre, String apellidos, String correoElectronico,
+    String telefono, int max, Long ident) {
+    
+        this.id = id;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.correoElectronico = correoElectronico;
+        this.maxExamCorregir = max;
+        this.identificadorUsuario = ident;
+}
+
+    public Corrector() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public Corrector(Object object, String antonio, String garcía, String antonioumaes, String string, String string0) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
         
     @Override
     public String toString() {
