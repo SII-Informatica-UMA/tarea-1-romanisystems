@@ -1,5 +1,6 @@
 package es.uma.informatica.notificaciones;
 
+import es.uma.informatica.Main;
 import es.uma.informatica.dtos.NotificacionDTO;
 import es.uma.informatica.entidades.Destinatario;
 import es.uma.informatica.entidades.Notificacion;
@@ -42,10 +43,10 @@ import org.springframework.web.util.UriBuilderFactory;
  *
  * @author gabrycina
  */
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes= Main.class, webEnvironment = WebEnvironment.RANDOM_PORT)
 @DisplayName("En el servicio de notificaciones")
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
-class NotificacionesApplicationTest {
+public class NotificacionesApplicationTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
