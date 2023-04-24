@@ -48,16 +48,18 @@ public class NotificacionServicio {
         return listaNotificaciones;
     }
 
+    public Notificacion obtenerNotificacionById(Long id) {
+        Optional<Notificacion> notificacion = repo.findById(id);
+        if (notificacion.isEmpty()) {
+            throw new EntidadNoEncontradaException();
+        } else {
+            return notificacion.get();
+        }
+    }
+
     public Long aniadirNotificacion(Notificacion notificacion) {
         repo.save(notificacion);
         return notificacion.getId();
-    }
-
-    public Notificacion obtenerNotificacionById(Long id) {
-        Optional<Notificacion> notificacion = repo.findById(id);
-        if(notificacion.isEmpty())
-            throw new EntidadNoEncontradaException();
-        else return notificacion.get();
     }
 
     public void eliminarNotificacion(Long id) {
@@ -75,22 +77,22 @@ public class NotificacionServicio {
             throw new EntidadNoEncontradaException();
         }
     }
-    
-    public void abortarPendientes(String tipo){
+
+    public void abortarPendientes(String tipo) {
         for (Notificacion notificacion : repo.findAll()) {
-            if(notificacion.getEstado().equals("PENDIENTE") && notificacion.getTipo().equals(tipo)){
+            if (notificacion.getEstado().equals("PENDIENTE") && notificacion.getTipo().equals(tipo)) {
                 Optional<Notificacion> res = repo.findById(notificacion.getId());
                 Notificacion abortar = res.get();
                 abortar.setEstado("ABORTADA");
                 repo.save(abortar);
             }
-                
+
         }
     }
-    
-    public void abortarPendientes(){
+
+    public void abortarPendientes() {
         for (Notificacion notificacion : repo.findAll()) {
-            if(notificacion.getEstado().equals("PENDIENTE")){
+            if (notificacion.getEstado().equals("PENDIENTE")) {
                 Optional<Notificacion> res = repo.findById(notificacion.getId());
                 Notificacion abortar = res.get();
                 abortar.setEstado("ABORTADA");

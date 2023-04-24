@@ -17,58 +17,51 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class GestionCorrectoresServicio {
-    
+
     private final CorrectoresRepository repo;
-    
+
     @Autowired
     public GestionCorrectoresServicio(CorrectoresRepository correctores) {
-        
         this.repo = correctores;
-        
     }
-    
+
     public List<Corrector> obtenerCorrectores() {
-        List<Corrector> listaCorrectores= new ArrayList<>();
+        List<Corrector> listaCorrectores = new ArrayList<>();
 
         for (Corrector corrector : repo.findAll()) {
             listaCorrectores.add(corrector);
         }
 
         return listaCorrectores;
+    }
 
-    }
-    
-     public Corrector obtenerCorrectorById(Long id) {
+    public Corrector obtenerCorrectorById(Long id) {
         Optional<Corrector> corrector = repo.findById(id);
-        if(corrector.isEmpty())
+        if (corrector.isEmpty()) {
             throw new EntidadNoEncontradaException();
-        else return corrector.get();
-    }
-     
-     public void actualizarCorrector(Corrector corrector) {
-        if (repo.existsById(corrector.getId())) {
-            repo.save(corrector);
-           
         } else {
-            throw new EntidadNoEncontradaException();
+            return corrector.get();
         }
     }
-     
-     public void eliminarCorrector(Long id) {
-       if (repo.existsById(id)) {
-            repo.deleteById(id);
-           
-        } else {
-            throw new EntidadNoEncontradaException();
-        }
-    
-}
-     
-      public Long aniadirCorrector(Corrector corrector) {
+
+    public Long aniadirCorrector(Corrector corrector) {
         repo.save(corrector);
         return corrector.getId();
     }
-     
-     
-     
+
+    public void eliminarCorrector(Long id) {
+        if (repo.existsById(id)) {
+            repo.deleteById(id);
+        } else {
+            throw new EntidadNoEncontradaException();
+        }
+    }
+
+    public void actualizarCorrector(Corrector corrector) {
+        if (repo.existsById(corrector.getId())) {
+            repo.save(corrector);
+        } else {
+            throw new EntidadNoEncontradaException();
+        }
+    }
 }
