@@ -56,6 +56,30 @@
 	  <version>3.1.1</version>
 	  <type>jar</type>
 	 </dependency>
+	 <dependency>
+	  <groupId>org.hibernate</groupId>
+	  <artifactId>hibernate-core</artifactId>
+	  <version>5.3.13.Final</version>
+	  <type>jar</type>
+	 </dependency>
+	 <dependency>
+	  <groupId>org.hibernate.orm</groupId>
+	  <artifactId>hibernate-core</artifactId>
+	  <version>6.1.7.Final</version>
+	  <type>jar</type>
+	 </dependency>
+	 <dependency>
+	  <groupId>org.hibernate.validator</groupId>
+	  <artifactId>hibernate-validator</artifactId>
+	  <version>8.0.0.Final</version>
+	  <type>jar</type>
+	 </dependency>
+	 <dependency>
+	  <groupId>org.projectlombok</groupId>
+	  <artifactId>lombok</artifactId>
+	  <version>1.18.26</version>
+	  <type>jar</type>
+	 </dependency>
 	</dependencies>
     <name>gestion_de_correctores</name>
 </project>

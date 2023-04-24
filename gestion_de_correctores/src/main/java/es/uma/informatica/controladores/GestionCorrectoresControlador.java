@@ -4,6 +4,8 @@
  */
 package es.uma.informatica.controladores;
 
+import es.uma.informatica.Dto.CorrectorDTO;
+import es.uma.informatica.Dto.CorrectorNuevoDTO;
 import es.uma.informatica.entidades.Corrector;
 import es.uma.informatica.servicios.GestionCorrectoresServicio;
 import es.uma.informatica.servicios.excepciones.EntidadNoEncontradaException;
@@ -38,20 +40,20 @@ public class GestionCorrectoresControlador {
     }
 
     @GetMapping
-    public List<Corrector> obtenerCorrectores() {
-        List<Corrector> corrector = servicio.obtenerCorrectores();
-        return corrector.stream().toList();
+    public List<CorrectorDTO> obtenerCorrectores() {
+        List<Corrector> correctores = servicio.obtenerCorrectores();
+        return correctores.stream().map(cot -> CorrectorDTO.fromCorrector(cot)).toList();
     }
 
     @GetMapping("{id}")
     @ResponseStatus(code = HttpStatus.OK)
-    public Corrector obtenerCorrector(@PathVariable Long id, UriComponentsBuilder uriBuilder) {
+    public CorrectorDTO obtenerCorrector(@PathVariable Long id, UriComponentsBuilder uriBuilder) {
         Corrector corrector = servicio.obtenerCorrectorById(id);
-        return corrector;
+        return CorrectorDTO.fromCorrector(corrector);
     }
 
     @PostMapping
-    public ResponseEntity aniadirCorrector(@RequestBody Corrector nuevoCorrector, UriComponentsBuilder builder) {
+    public ResponseEntity aniadirCorrector(@RequestBody CorrectorDTO nuevoCorrector, UriComponentsBuilder builder) {
         Corrector corrector = modelMapper.map(nuevoCorrector, Corrector.class);
         corrector.setId(null);
         Long id = servicio.aniadirCorrector(corrector);
@@ -69,7 +71,8 @@ public class GestionCorrectoresControlador {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity modificaCorrector(@PathVariable Long id, @RequestBody Corrector corrector) {
+    public ResponseEntity modificaCorrector(@PathVariable Long id, @RequestBody CorrectorDTO correctordt) {
+        Corrector corrector = modelMapper.map(correctordt, Corrector.class);
         corrector.setId(id);
         servicio.actualizarCorrector(corrector);
         return ResponseEntity.ok().build();

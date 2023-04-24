@@ -18,6 +18,7 @@ public class Corrector implements Serializable{
     private String correoElectronico;
     private String telefono;
     private int maxExamCorregir;
+    private Long identificadorUsuario;
 
     @ManyToOne
     @JoinColumn(name = "MATERIA")
@@ -85,6 +86,15 @@ public class Corrector implements Serializable{
     public String getNombre() {
         return nombre;
     }
+
+    public Long getIdentificadorUsuario() {
+        return identificadorUsuario;
+    }
+
+    public void setIdentificadorUsuario(Long identificadorUsuario) {
+        this.identificadorUsuario = identificadorUsuario;
+    }
+    
 
     public void setNombre(String nombre) {
         this.nombre = nombre;

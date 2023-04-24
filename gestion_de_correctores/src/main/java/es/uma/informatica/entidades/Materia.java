@@ -7,22 +7,24 @@ import javax.persistence.*;
 public class Materia implements Serializable{
 
     @Id
-    private int id;
+    private Long id;
     
     @Column(nullable = false)
     private String nombre;
     
     @Column(nullable = false)
     private int anio;
+    
+    private Long idConvocatoria;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 71 * hash + this.id;
+        hash = (int) (71 * hash + this.id);
         hash = 71 * hash + Objects.hashCode(this.nombre);
         hash = 71 * hash + this.anio;
         return hash;
@@ -49,12 +51,20 @@ public class Materia implements Serializable{
         return Objects.equals(this.nombre, other.nombre);
     }
 
+    public Long getIdConvocatoria() {
+        return idConvocatoria;
+    }
+
+    public void setIdConvocatoria(Long idConvocatoria) {
+        this.idConvocatoria = idConvocatoria;
+    }
+
     @Override
     public String toString() {
         return "Materia{" + "id=" + id + ", nombre=" + nombre + ", anio=" + anio + '}';
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
