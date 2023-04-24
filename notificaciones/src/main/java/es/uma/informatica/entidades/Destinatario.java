@@ -1,12 +1,10 @@
 package es.uma.informatica.entidades;
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.Set;
 import javax.persistence.*;
 
 @Entity
 public class Destinatario implements Serializable{
-
     @Id
     private int id;
     
@@ -20,9 +18,6 @@ public class Destinatario implements Serializable{
     private String correoElectronico;
        
     private String telefono;
-    
-    @ManyToMany(mappedBy= "destinatarios")
-    private Set<Lista> listas;
 
     public int getId() {
         return id;
@@ -48,10 +43,6 @@ public class Destinatario implements Serializable{
     public String getTelefono() {
         return telefono;
     }
-
-    public Set<Lista> getListas() {
-        return listas;
-    }
     
     public void setTipo(String tipo) {
         this.tipo = tipo;
@@ -69,10 +60,6 @@ public class Destinatario implements Serializable{
         this.telefono = telefono;
     }
 
-    public void setListas(Set<Lista> listas) {
-        this.listas = listas;
-    }
-
     @Override
     public int hashCode() {
         int hash = 7;
@@ -81,7 +68,6 @@ public class Destinatario implements Serializable{
         hash = 67 * hash + Objects.hashCode(this.nombre);
         hash = 67 * hash + Objects.hashCode(this.correoElectronico);
         hash = 67 * hash + Objects.hashCode(this.telefono);
-        hash = 67 * hash + Objects.hashCode(this.listas);
         return hash;
     }
 
@@ -109,15 +95,14 @@ public class Destinatario implements Serializable{
         if (!Objects.equals(this.correoElectronico, other.correoElectronico)) {
             return false;
         }
-        if (!Objects.equals(this.telefono, other.telefono)) {
-            return false;
-        }
-        return Objects.equals(this.listas, other.listas);
+        return Objects.equals(this.telefono, other.telefono);
     }
+
+
 
     @Override
     public String toString() {
-        return "Destinatario{" + "id=" + id + ", tipo=" + tipo + ", nombre=" + nombre + ", correoElectronico=" + correoElectronico + ", telefono=" + telefono + ", listas=" + listas + '}';
+        return "Destinatario{" + "id=" + id + ", tipo=" + tipo + ", nombre=" + nombre + ", correoElectronico=" + correoElectronico + ", telefono=" + telefono + '}';
     }
 
 }

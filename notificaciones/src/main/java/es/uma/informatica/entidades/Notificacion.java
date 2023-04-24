@@ -1,40 +1,63 @@
 package es.uma.informatica.entidades;
+
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 import javax.persistence.*;
+import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 @Entity
-public class Notificacion implements Serializable{
-
+public class Notificacion implements Serializable {    
     @Id
     private Long id;
+
+    @Column(nullable = false)
+    private String asunto;    
     
     @Column(nullable = false)
     private String mensaje;
-    
+
     @Column(nullable = false)
     private String tipo;
-    
-    @ManyToOne
-    @JoinColumn(name = "LISTA")
-    private Lista lista;
-    
+
+    @OneToOne
+    @JoinColumn(name = "DESTINATARIO")
+    private Destinatario destinatario;
+
     private String estado;
     
-    public String getEstado() {
-        
-        return estado;
-    }
+    private boolean sms;
+    private boolean email;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date programacionEnvio;
     
-    public void setEstado(String  e) {
-        
-        this.estado = e;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date momentoRealEnvio;
+
+    public Notificacion() {
+    }
+
+    public Notificacion(Long id, String asunto, String mensaje, String tipo, Destinatario destinatario, String estado, boolean sms, boolean email, Date programacionEnvio, Date momentoRealEnvio) {
+        this.id = id;
+        this.asunto = asunto;
+        this.mensaje = mensaje;
+        this.tipo = tipo;
+        this.destinatario = destinatario;
+        this.estado = estado;
+        this.sms = sms;
+        this.email = email;
+        this.programacionEnvio = programacionEnvio;
+        this.momentoRealEnvio = momentoRealEnvio;
     }
 
     public Long getId() {
         return id;
     }
 
+    public String getAsunto() {
+        return asunto;
+    }
 
     public String getMensaje() {
         return mensaje;
@@ -44,17 +67,38 @@ public class Notificacion implements Serializable{
         return tipo;
     }
 
-    public Lista getLista() {
-        return lista;
+    public Destinatario getDestinatario() {
+        return destinatario;
     }
 
-    
-    
+    public String getEstado() {
+        return estado;
+    }
+
+    public boolean isSms() {
+        return sms;
+    }
+
+    public boolean isEmail() {
+        return email;
+    }
+
+    public Date getProgramacionEnvio() {
+        return programacionEnvio;
+    }
+
+    public Date getMomentoRealEnvio() {
+        return momentoRealEnvio;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
 
-    
+    public void setAsunto(String asunto) {
+        this.asunto = asunto;
+    }
+
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
@@ -63,17 +107,43 @@ public class Notificacion implements Serializable{
         this.tipo = tipo;
     }
 
-    public void setLista(Lista lista) {
-        this.lista = lista;
+    public void setDestinatario(Destinatario destinatario) {
+        this.destinatario = destinatario;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public void setSms(boolean sms) {
+        this.sms = sms;
+    }
+
+    public void setEmail(boolean email) {
+        this.email = email;
+    }
+
+    public void setProgramacionEnvio(Date programacionEnvio) {
+        this.programacionEnvio = programacionEnvio;
+    }
+
+    public void setMomentoRealEnvio(Date momentoRealEnvio) {
+        this.momentoRealEnvio = momentoRealEnvio;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = (int) (47 * hash + this.id);
-        hash = 47 * hash + Objects.hashCode(this.mensaje);
-        hash = 47 * hash + Objects.hashCode(this.tipo);
-        hash = 47 * hash + Objects.hashCode(this.lista);
+        int hash = 5;
+        hash = 41 * hash + Objects.hashCode(this.id);
+        hash = 41 * hash + Objects.hashCode(this.asunto);
+        hash = 41 * hash + Objects.hashCode(this.mensaje);
+        hash = 41 * hash + Objects.hashCode(this.tipo);
+        hash = 41 * hash + Objects.hashCode(this.destinatario);
+        hash = 41 * hash + Objects.hashCode(this.estado);
+        hash = 41 * hash + (this.sms ? 1 : 0);
+        hash = 41 * hash + (this.email ? 1 : 0);
+        hash = 41 * hash + Objects.hashCode(this.programacionEnvio);
+        hash = 41 * hash + Objects.hashCode(this.momentoRealEnvio);
         return hash;
     }
 
@@ -89,7 +159,13 @@ public class Notificacion implements Serializable{
             return false;
         }
         final Notificacion other = (Notificacion) obj;
-        if (this.id != other.id) {
+        if (this.sms != other.sms) {
+            return false;
+        }
+        if (this.email != other.email) {
+            return false;
+        }
+        if (!Objects.equals(this.asunto, other.asunto)) {
             return false;
         }
         if (!Objects.equals(this.mensaje, other.mensaje)) {
@@ -98,11 +174,25 @@ public class Notificacion implements Serializable{
         if (!Objects.equals(this.tipo, other.tipo)) {
             return false;
         }
-        return Objects.equals(this.lista, other.lista);
+        if (!Objects.equals(this.estado, other.estado)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.destinatario, other.destinatario)) {
+            return false;
+        }
+        if (!Objects.equals(this.programacionEnvio, other.programacionEnvio)) {
+            return false;
+        }
+        return Objects.equals(this.momentoRealEnvio, other.momentoRealEnvio);
     }
 
     @Override
     public String toString() {
-        return "Notificacion{" + "id=" + id + ", mensaje=" + mensaje + ", tipo=" + tipo + ", lista=" + lista + '}';
+        return "Notificacion{" + "id=" + id + ", asunto=" + asunto + ", mensaje=" + mensaje + ", tipo=" + tipo + ", destinatario=" + destinatario + ", estado=" + estado + ", sms=" + sms + ", email=" + email + ", programacionEnvio=" + programacionEnvio + ", momentoRealEnvio=" + momentoRealEnvio + '}';
     }
+
+    
 }
