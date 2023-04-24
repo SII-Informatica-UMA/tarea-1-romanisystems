@@ -19,6 +19,11 @@ public class Destinatario implements Serializable{
        
     private String telefono;
 
+    public Destinatario() {
+    }
+    
+    
+
     public int getId() {
         return id;
     }
