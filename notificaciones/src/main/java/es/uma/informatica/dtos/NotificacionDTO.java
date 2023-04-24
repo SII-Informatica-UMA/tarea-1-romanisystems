@@ -4,9 +4,6 @@
  */
 package es.uma.informatica.dtos;
 
-import java.net.URI;
-import java.util.function.Function;
-
 import es.uma.informatica.entidades.Notificacion;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +36,7 @@ public class NotificacionDTO {
     String mensajeError;
     String momentoRealEnvio;
 
-    public static NotificacionDTO fromNotificacion(Notificacion notificacion, Function<Long, URI> uriBuilder) {
+    public static NotificacionDTO fromNotificacion(Notificacion notificacion) {
         NotificacionDTO dto = new NotificacionDTO();
         dto.setId(notificacion.getId());
         dto.setAsunto(notificacion.getAsunto());

@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.*;
-import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 @Entity
 public class Notificacion implements Serializable {    
