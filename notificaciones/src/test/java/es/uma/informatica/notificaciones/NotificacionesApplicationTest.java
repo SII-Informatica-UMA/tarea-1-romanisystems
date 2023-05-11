@@ -51,7 +51,7 @@ public class NotificacionesApplicationTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    @Value(value = "${local.server.port}")
+    @Value(value = "8080")
     private int port;
 
     @Autowired
