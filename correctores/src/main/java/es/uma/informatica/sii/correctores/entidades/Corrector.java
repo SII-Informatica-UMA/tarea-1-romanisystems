@@ -30,8 +30,7 @@ public class Corrector implements Serializable{
     @JoinColumn(name = "MATERIA")
     private Materia materia;
     
-    public Corrector (Long id, String nombre, String apellidos, String correoElectronico,
-    String telefono, int max, Long ident) {
+    public Corrector (Long id,int max, String nombre, String apellidos, String correoElectronico, String telefono, int par1, Long ident) {
     
         this.id = id;
         this.nombre = nombre;

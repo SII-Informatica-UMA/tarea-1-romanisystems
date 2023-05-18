@@ -115,53 +115,59 @@ public class CorrectorApplicationTest {
             RequestEntity peticion = get("http", "localhost", port, "/correctores");
 
             ResponseEntity respuesta = restTemplate.exchange(peticion,
-                    new ParameterizedTypeReference<List<CorrectorDTO>>() {
+                    new ParameterizedTypeReference<List<Corrector>>() {
             });
 
+            ArrayList a = new ArrayList();
+            a.add(new ArrayList());
+            
             assertThat(respuesta.getStatusCode().value()).isEqualTo(200);
-            assertThat(Arrays.asList(respuesta.getBody())).isEmpty();
+           assertThat(Arrays.asList(respuesta.getBody())).isEqualTo(a);
         }
 
         @Nested
         @DisplayName("inserta una corrector")
         public class InsertaCorrectores {
 
-//            @Test
-//            @DisplayName("sin ID")
-//            public void sinID() {
-//
-//                // Preparamos la corrector de insertar
-//                CorrectorDTO corrector = CorrectorDTO.builder()
-//                        .nombre("Test")
-//                        .apellido("Test")
-//                        .identificadorUsuario(123345L)
-//                        .materias(new ArrayList<>())
-//                        .maximasCorrecciones(2)
-//                        .telefono("3492902932")
-//                        .build();
-//
-//                // Preparamos la petición con la corrector dentro
-//                RequestEntity peticion = post("http", "localhost", port, "/correctores", corrector);
-//
-//                // Invocamos al servicio REST 
-//                ResponseEntity respuesta = restTemplate.exchange(peticion, Void.class);
-//
-//                // Comprobamos el resultado
-//                assertThat(respuesta.getStatusCode().value()).isEqualTo(201);
-//                assertThat(respuesta.getHeaders().get("Location").get(0))
-//                        .startsWith("http://localhost:" + port + "/correctores");
-//
-//                List<Corrector> correctoresBD = new ArrayList<>();
-//
-//                for (Corrector not : repo.findAll()) {
-//                    correctoresBD.add(not);
-//                }
-//
-//                assertThat(correctoresBD).hasSize(1);
-//                assertThat(respuesta.getHeaders().get("Location").get(0))
-//                        .endsWith("/" + correctoresBD.get(0).getId());
-//                compruebaCampos(corrector.corrector(), correctoresBD.get(0));
-//            }
+           @Test
+            @DisplayName("sin ID")
+            public void sinID() {
+
+               // Preparamos la corrector de insertar
+               Corrector corrector =new  Corrector  (
+                        
+                        null,
+                        1234767687,
+                          "test",
+                        "Test",
+                        "Pedro",
+                        "3122",
+                        123345,                 
+                        22324355l  );
+               
+               
+               // Preparamos la petición con la corrector dentro
+               RequestEntity peticion = post("http", "localhost", port, "/correctores", corrector);
+
+                // Invocamos al servicio REST 
+                ResponseEntity respuesta = restTemplate.exchange(peticion, Void.class);
+
+                // Comprobamos el resultado
+             assertThat(respuesta.getStatusCode().value()).isEqualTo(201);
+                assertThat(respuesta.getHeaders().get("Location").get(0))
+                        .startsWith("http://localhost:" + port + "/correctores");
+
+               List<Corrector> correctoresBD = new ArrayList<>();
+
+                for (Corrector corr : repo.findAll()) {
+                    correctoresBD.add(corr);
+                }
+
+                assertThat(correctoresBD).hasSize(1);
+                assertThat(respuesta.getHeaders().get("Location").get(0))
+                        .endsWith("/" + correctoresBD.get(0).getId());
+                compruebaCampos(corrector, correctoresBD.get(0));
+            }
 
             private void compruebaRespuesta(Corrector corrector, ResponseEntity<Void> respuesta) {
                 assertThat(respuesta.getStatusCode().value()).isEqualTo(201);
@@ -218,14 +224,18 @@ public class CorrectorApplicationTest {
         @DisplayName("devuelve error cuando se modifica una corrector concreta")
         public void devuelveErrorAlModificarCorrector() {
                 // Preparamos la corrector de insertar
-                CorrectorDTO corrector = CorrectorDTO.builder()
-                        .nombre("Test")
-                        .apellido("Test")
-                        .identificadorUsuario(123345L)
-                        .materias(new ArrayList<>())
-                        .maximasCorrecciones(2)
-                        .telefono("3492902932")
-                        .build();
+                
+                
+                Corrector corrector = new Corrector (
+                        
+                        1L,
+                        1234767687,
+                          "test",
+                        "Test",
+                        "Pedro",
+                        "3122",
+                        123345,                 
+                        22324355l  );
 
             RequestEntity peticion = put("http", "localhost", port, "/correctores/1", corrector);
 
