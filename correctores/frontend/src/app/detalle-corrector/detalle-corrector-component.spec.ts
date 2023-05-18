@@ -53,4 +53,16 @@ describe('DetalleCorrectorComponent', () => {
       component.corrector?.id
     );
   });
+
+  it('should emit correctorEditado event when editaCorrector is called', () => {
+    spyOn(component.correctorEditado, 'emit');
+
+    // Llamar al métodoCorrector
+    component.editarCorrector();
+
+    // Verificar que se haya emitido el evento con el ID correcto del corrector
+    expect(component.correctorEditado.emit).toHaveBeenCalledWith(
+      component.corrector
+    );
+  });
 });

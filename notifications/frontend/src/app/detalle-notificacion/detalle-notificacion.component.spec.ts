@@ -52,4 +52,16 @@ describe('DetalleNotificacionComponent', () => {
       component.notificacion?.id
     );
   });
+
+  it('should emit notificacionEditada event when editanotificacion is called', () => {
+    spyOn(component.notificacionEditada, 'emit');
+
+    // Llamar al métodonotificacion
+    component.editarNotificacion();
+
+    // Verificar que se haya emitido el evento con el ID correcto del notificacion
+    expect(component.notificacionEditada.emit).toHaveBeenCalledWith(
+      component.notificacion
+    );
+  });
 });
