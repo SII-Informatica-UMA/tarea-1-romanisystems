@@ -12,7 +12,36 @@
     <span class="col-md-9 offset-2 offset-md-0">{{notificacion?.
       momentoRealEnvio}}</span>
   </div>
-
+  <div class="row">
+    <label class="col-md-3" for="momentorealenvio">Tipo:</label>
+    <span class="col-md-9 offset-2 offset-md-0">{{notificacion?.
+      tipo}}</span>
+  </div>
+  <div class="row">
+    <label class="col-md-3" for="momentorealenvio">Destinatario:</label>
+    <span class="col-md-9 offset-2 offset-md-0">{{notificacion?.
+      destinatario}}</span>
+  </div>
+  <div class="row">
+    <label class="col-md-3" for="momentorealenvio">Estado:</label>
+    <span class="col-md-9 offset-2 offset-md-0">{{notificacion?.
+      estado}}</span>
+  </div>
+  <div class="row">
+    <label class="col-md-3" for="momentorealenvio">SMS:</label>
+    <span class="col-md-9 offset-2 offset-md-0">{{notificacion?.
+      sms}}</span>
+  </div>
+  <div class="row">
+    <label class="col-md-3" for="momentorealenvio">Email:</label>
+    <span class="col-md-9 offset-2 offset-md-0">{{notificacion?.
+      email}}</span>
+  </div>
+  <div class="row">
+    <label class="col-md-3" for="momentorealenvio">Programacion Envio:</label>
+    <span class="col-md-9 offset-2 offset-md-0">{{notificacion?.
+      programacionEnvio}}</span>
+  </div>
   <div class="row">
     <button class="col-auto btn btn-outline-primary" (click)="eliminarNotificacion()">Eliminar <i
         class="bi bi-trash-fill"></i></button>

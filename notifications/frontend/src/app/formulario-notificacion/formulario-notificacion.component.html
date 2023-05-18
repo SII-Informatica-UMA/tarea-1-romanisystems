@@ -12,6 +12,23 @@
     <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button> -->
     <input class="form-control" id="momentorealenvio" [(ngModel)]="notificacion.momentoRealEnvio"
       placeholder="Momento real Envio">
+    <label for="nombre">Tipo:</label>
+    <input class="form-control" id="tipo" [(ngModel)]="notificacion.tipo" placeholder="Tipo">
+    <label for="nombre">Destinatario:</label>
+    <input class="form-control" id="destinatario" [(ngModel)]="notificacion.destinatario" placeholder="Destinatario">
+    <label for="nombre">Estado:</label>
+    <input class="form-control" id="estado" [(ngModel)]="notificacion.estado" placeholder="Estado">
+    <label for="nombre">SMS:</label>
+    <input id="sms" type="checkbox" [(ngModel)]="notificacion.sms">
+    <br>
+
+    <label for="nombre">Email:</label>
+    <input id="email" type="checkbox" [(ngModel)]="notificacion.mensaje">
+    <br>
+
+    <label for="nombre">Programacion Envio:</label>
+    <input class="form-control" id="programacionEnvio" [(ngModel)]="notificacion.programacionEnvio"
+      placeholder="Programacion Envio">
   </div>
 </div>
 <div class="modal-footer">

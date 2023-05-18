@@ -13,6 +13,12 @@ export class FormularioNotificacionComponent {
       id: 0,
       mensaje: '',
       momentoRealEnvio: '',
+      tipo: '',
+      destinatario: '',
+      estado: '',
+      sms: false,
+      email: false,
+      programacionEnvio: ''
     }
 
   constructor(public modal: NgbActiveModal) { }
