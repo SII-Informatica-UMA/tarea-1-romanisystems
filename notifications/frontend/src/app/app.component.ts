@@ -53,4 +53,19 @@ export class AppComponent implements OnInit {
     this.notificaciones = this.notificacionesService.getNotificaciones();
     this.notificacionElegida = undefined;
   }
+
+  borrarPendientes(): void {
+    let pendientes = []
+    for(var i = 0; i < this.notificaciones.length; i++){
+      if(this.notificaciones[i].estado === "PENDIENTE")
+        pendientes.push(this.notificaciones[i]);
+    }
+
+    for(var i = 0; i < pendientes.length; i++){
+      this.notificacionesService.eliminarNotificacion(pendientes[i].id)
+    }
+
+    this.notificaciones = this.notificacionesService.getNotificaciones();
+    this.notificacionElegida = undefined;
+  }
 }

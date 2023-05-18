@@ -9,6 +9,7 @@
       </div>
       <br>
       <button type="button" class="btn btn-outline-primary bi bi-plus-lg" (click)="aniadirNotificacion()"></button>
+      <button type="button" class="btn btn-outline-primary bi bi-scissors" (click)="borrarPendientes()"></button>
     </div>
     <div class="col-md-6" *ngIf="notificacionElegida">
       <app-detalle-notificacion [notificacion]="notificacionElegida" (notificacionEditada)="notificacionEditada($event)"
