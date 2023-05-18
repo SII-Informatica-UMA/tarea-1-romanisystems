@@ -4,8 +4,8 @@
       <h1>Lista de Correctores ✍🏻</h1>
       <div class="list-group">
         <button *ngFor="let corrector of correctores" class="list-group-item list-group-item-action"
-          (click)="elegirCorrector(corrector)" [class.active]="corrector === correctorElegido">{{corrector.nombre +
-          " " + corrector.apellido}}</button>
+          (click)="elegirCorrector(corrector)" [class.active]="corrector === correctorElegido">{{corrector?.nombre +
+          " " + corrector?.apellido}}</button>
       </div>
       <br>
       <button type="button" class="btn btn-outline-primary bi bi-plus-lg" (click)="aniadirCorrector()"></button>
