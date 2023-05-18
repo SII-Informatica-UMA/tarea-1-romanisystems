@@ -1,8 +1,5 @@
-<<<<<<<< Updated upstream:notifications/src/main/java/es/uma/informatica/sii/notifications/controladores/NotificationsController.java
-========
 package es.uma.informatica.sii.notifications;
 
->>>>>>>> Stashed changes:notifications/src/main/java/es/uma/informatica/sii/notifications/NotificationsController.java
 import es.uma.informatica.sii.notifications.dtos.NotificacionDTO;
 import es.uma.informatica.sii.notifications.entidades.Notificacion;
 import es.uma.informatica.sii.notifications.servicios.LogicaNotificaciones;

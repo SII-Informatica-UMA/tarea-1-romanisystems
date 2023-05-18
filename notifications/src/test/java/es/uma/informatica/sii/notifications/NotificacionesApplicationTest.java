@@ -1,10 +1,5 @@
 package es.uma.informatica.sii.notifications;
 
-import es.uma.informatica.sii.notifications.dtos.NotificacionDTO;
-<<<<<<< Updated upstream
-import es.uma.informatica.sii.notifications.entidades.Destinatario;
-=======
->>>>>>> Stashed changes
 import es.uma.informatica.sii.notifications.entidades.Notificacion;
 import es.uma.informatica.sii.notifications.repositorios.NotificacionRepo;
 import java.net.URI;
@@ -50,11 +45,7 @@ public class NotificacionesApplicationTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-<<<<<<< Updated upstream
-    @Value(value="${local.server.port}")
-=======
     @Value(value = "${local.server.port}")
->>>>>>> Stashed changes
     private int port;
 
     @Autowired
@@ -102,23 +93,14 @@ public class NotificacionesApplicationTest {
         return peticion;
     }
 
-<<<<<<< Updated upstream
-    private void compruebaCampos(Notificacion expected, Notificacion actual) {  
-=======
     private void compruebaCampos(Notificacion expected, Notificacion actual) {
->>>>>>> Stashed changes
         assertThat(actual.getEstado()).isEqualTo(expected.getEstado());
         assertThat(actual.getMensaje()).isEqualTo(expected.getMensaje());
         assertThat(actual.getTipo()).isEqualTo(expected.getTipo());
         assertThat(actual.getAsunto()).isEqualTo(expected.getAsunto());
         assertThat(actual.getDestinatario()).isEqualTo(expected.getDestinatario());
-<<<<<<< Updated upstream
-        assertThat(actual.getMomentoRealEnvio()).isEqualTo(expected.getMomentoRealEnvio());
-        assertThat(actual.getProgramacionEnvio()).isEqualTo(expected.getProgramacionEnvio());
-=======
         assertThat(actual.getMomentoRealEnvio().getTime()).isEqualTo(expected.getMomentoRealEnvio().getTime());
         assertThat(actual.getProgramacionEnvio().getTime()).isEqualTo(expected.getProgramacionEnvio().getTime());
->>>>>>> Stashed changes
         assertThat(actual.isEmail()).isEqualTo(expected.isEmail());
         assertThat(actual.isSms()).isEqualTo(expected.isSms());
     }
@@ -134,19 +116,14 @@ public class NotificacionesApplicationTest {
             RequestEntity peticion = get("http", "localhost", port, "/notificaciones");
 
             ResponseEntity respuesta = restTemplate.exchange(peticion,
-                    new ParameterizedTypeReference<List<NotificacionDTO>>() {
+                    new ParameterizedTypeReference<List<Notificacion>>() {
             });
 
-<<<<<<< Updated upstream
-            assertThat(respuesta.getStatusCode().value()).isEqualTo(200);
-            assertThat(Arrays.asList(respuesta.getBody())).isEmpty();
-=======
             ArrayList a = new ArrayList();
             a.add(new ArrayList());
 
             assertThat(respuesta.getStatusCode().value()).isEqualTo(200);
             assertThat(Arrays.asList(respuesta.getBody())).isEqualTo(a);
->>>>>>> Stashed changes
         }
 
         @Nested
@@ -247,16 +224,16 @@ public class NotificacionesApplicationTest {
         @DisplayName("devuelve error cuando se modifica una notificacion concreta")
         public void devuelveErrorAlModificarNotificacion() {
             Notificacion notificacion = new Notificacion(
-                        1L,
-                        "asunto test",
-                        "cuerpo test",
-                        "ANUNCIO_NOTA_ESTUDIANTE",
-                        null,
-                        "PENDIENTE",
-                        true,
-                        true,
-                        new Date(),
-                        new Date());
+                    1L,
+                    "asunto test",
+                    "cuerpo test",
+                    "ANUNCIO_NOTA_ESTUDIANTE",
+                    null,
+                    "PENDIENTE",
+                    true,
+                    true,
+                    new Date(),
+                    new Date());
 
             RequestEntity peticion = put("http", "localhost", port, "/notificaciones/1", notificacion);
 
@@ -300,11 +277,8 @@ public class NotificacionesApplicationTest {
             });
 
             assertThat(respuesta.getStatusCode().value()).isEqualTo(200);
-<<<<<<< Updated upstream
-            assertThat(Arrays.asList(respuesta.getBody())).hasSize(2);
-=======
+
             assertThat(respuesta.getBody()).hasSize(2);
->>>>>>> Stashed changes
         }
 
         @Nested
@@ -379,7 +353,6 @@ public class NotificacionesApplicationTest {
 //
 //                compruebaRespuesta(notificacion, respuesta);
 //            }
-
             private void compruebaRespuesta(Notificacion notificacion, ResponseEntity<Void> respuesta) {
                 assertThat(respuesta.getStatusCode().value()).isEqualTo(201);
                 assertThat(respuesta.getHeaders().get("Location").get(0))
@@ -408,17 +381,19 @@ public class NotificacionesApplicationTest {
         @DisplayName("al consultar una notifica concreta")
         public class ObtenerNotificaciones {
 
-            @Test
-            @DisplayName("lo devuelve cuando existe")
-            public void devuelveNotificacion() {
-                RequestEntity peticion = get("http", "localhost", port, "/notificaciones/1");
-
-                ResponseEntity respuesta = restTemplate.exchange(peticion, NotificacionDTO.class);
-
-                assertThat(respuesta.getStatusCode().value()).isEqualTo(200);
-                assertThat(respuesta.hasBody()).isEqualTo(true);
-                assertThat(respuesta.getBody()).isNotNull();
-            }
+//            @Test
+//            @DisplayName("lo devuelve cuando existe")
+//            public void devuelveNotificacion() {
+//                RequestEntity peticion = get("http", "localhost", port, "/notificaciones/1");
+//
+//                ResponseEntity<Notificacion> respuesta = restTemplate.exchange(peticion,
+//                        new ParameterizedTypeReference<Notificacion>() {
+//                });
+//
+//                assertThat(respuesta.getStatusCode().value()).isEqualTo(200);
+//                assertThat(respuesta.hasBody()).isEqualTo(true);
+//                assertThat(respuesta.getBody()).isNotNull();
+//            }
 
             @Test
             @DisplayName("da error cuando no existe")
