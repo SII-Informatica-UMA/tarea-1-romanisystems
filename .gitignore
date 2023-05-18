@@ -1,4 +1,4 @@
-/gestion_de_correctores/target/
-/notificaciones/target/
 /notifications/target/
 /correctores/target/
+/notifications/frontend/.angular/
+/notifications/frontend/node_modules/

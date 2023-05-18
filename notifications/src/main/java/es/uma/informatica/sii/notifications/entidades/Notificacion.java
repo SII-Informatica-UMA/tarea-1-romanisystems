@@ -1,7 +1,14 @@
 package es.uma.informatica.sii.notifications.entidades;
 
+<<<<<<< Updated upstream
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+=======
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+>>>>>>> Stashed changes
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
@@ -13,7 +20,7 @@ import java.util.Objects;
 
 @Entity
 public class Notificacion implements Serializable {    
-    @Id
+    @Id @GeneratedValue
     private Long id;
 
     @Column(nullable = false)
@@ -25,9 +32,7 @@ public class Notificacion implements Serializable {
     @Column(nullable = false)
     private String tipo;
 
-    @OneToOne
-    @JoinColumn(name = "DESTINATARIO")
-    private Destinatario destinatario;
+    private String destinatario;
 
     private String estado;
     
@@ -43,7 +48,7 @@ public class Notificacion implements Serializable {
     public Notificacion() {
     }
 
-    public Notificacion(Long id, String asunto, String mensaje, String tipo, Destinatario destinatario, String estado, boolean sms, boolean email, Date programacionEnvio, Date momentoRealEnvio) {
+    public Notificacion(Long id, String asunto, String mensaje, String tipo, String destinatario, String estado, boolean sms, boolean email, Date programacionEnvio, Date momentoRealEnvio) {
         this.id = id;
         this.asunto = asunto;
         this.mensaje = mensaje;
@@ -72,7 +77,7 @@ public class Notificacion implements Serializable {
         return tipo;
     }
 
-    public Destinatario getDestinatario() {
+    public String getDestinatario() {
         return destinatario;
     }
 
@@ -112,7 +117,7 @@ public class Notificacion implements Serializable {
         this.tipo = tipo;
     }
 
-    public void setDestinatario(Destinatario destinatario) {
+    public void setDestinatario(String destinatario) {
         this.destinatario = destinatario;
     }
 

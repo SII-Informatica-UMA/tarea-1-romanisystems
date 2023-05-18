@@ -1,6 +1,13 @@
 package es.uma.informatica.sii.notifications.entidades;
+<<<<<<< Updated upstream
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+=======
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+>>>>>>> Stashed changes
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
@@ -10,7 +17,7 @@ import java.util.Objects;
 @Entity
 public class Fallo implements Serializable{
 
-    @Id
+    @Id @GeneratedValue
     private int id;
     
     @Column(nullable = false)
@@ -19,8 +26,8 @@ public class Fallo implements Serializable{
     @Column(nullable = false)
     private String mensaje;
     
-    @OneToOne
-    @JoinColumn(name = "NOTIFICACION")
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "NOTIFICACION_id")
     private Notificacion notificacion;
 
     @Override

@@ -38,8 +38,7 @@ public class NotificacionDTO {
         dto.setAsunto(notificacion.getAsunto());
         dto.setCuerpo(notificacion.getMensaje());
 
-        dto.setEmailDestino(notificacion.getDestinatario().getCorreoElectronico());
-        dto.setTelefonoDestino(notificacion.getDestinatario().getTelefono());
+        dto.setEmailDestino(notificacion.getDestinatario());
         
         dto.setEstado(notificacion.getEstado());
         dto.setTipoNotificacion(notificacion.getTipo());
