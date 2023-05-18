@@ -1,0 +1,19 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{accion}} notificacion</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cierre usuario')"></button>
+</div>
+<div class="modal-body">
+  <div class="form-group">
+    <label for="nombre">Mensaje:</label>
+    <input class="form-control" id="mensaje" [(ngModel)]="notificacion.mensaje" placeholder="Mensaje">
+    <label for="apellidos">Momento Real Envio:</label>
+    <!-- <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="notificacion.momentoRealEnvio"
+      ngbDatepicker #d="ngbDatepicker" />
+    <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button> -->
+    <input class="form-control" id="momentorealenvio" [(ngModel)]="notificacion.momentoRealEnvio"
+      placeholder="Momento real Envio">
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="guardarNotifica()">Guardar</button>
+</div>

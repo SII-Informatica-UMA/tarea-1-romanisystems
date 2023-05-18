@@ -1,5 +1,5 @@
-export interface  Notificacion {
+export interface Notificacion {
   id: number;
   mensaje: string;
-  momentoRealEnvio:Date;
+  momentoRealEnvio:string;
 }

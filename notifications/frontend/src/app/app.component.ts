@@ -1,47 +1,56 @@
 import { Component, OnInit } from '@angular/core';
 import { Notificacion } from './notificacion';
 import { NotificacionesService } from './notificaciones.service';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {FormularioContactoComponent} from './formulario-contacto/formulario-contacto.component'
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormularioNotificacionComponent } from './formulario-notificacion/formulario-notificacion.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  contactos: Contacto [] = [];
-  contactoElegido?: Contacto;
+  notificaciones: Notificacion[] = [];
+  notificacionElegida?: Notificacion;
 
-  constructor(private contactosService: ContactosService, private modalService: NgbModal) { }
+  constructor(
+    private notificacionesService: NotificacionesService,
+    private modalService: NgbModal
+  ) {}
 
   ngOnInit(): void {
-    this.contactos = this.contactosService.getContactos();
+    this.notificaciones = this.notificacionesService.getNotificaciones();
   }
 
-  elegirContacto(contacto: Contacto): void {
-    this.contactoElegido = contacto;
+  elegirNotificacion(notificacion: Notificacion): void {
+    this.notificacionElegida = notificacion;
   }
 
-  aniadirContacto(): void {
-    let ref = this.modalService.open(FormularioContactoComponent);
-    ref.componentInstance.accion = "Añadir";
-    ref.componentInstance.contacto = {id: 0, nombre: '', apellidos: '', email: '', telefono: ''};
-    ref.result.then((contacto: Contacto) => {
-      this.contactosService.addContacto(contacto);
-      this.contactos = this.contactosService.getContactos();
-    }, (reason) => {});
-
+  aniadirNotificacion(): void {
+    let ref = this.modalService.open(FormularioNotificacionComponent);
+    ref.componentInstance.accion = 'Añadir';
+    ref.componentInstance.notificacion = {
+      id: 0,
+      mensaje: '',
+      momentoRealEnvio: '',
+    };
+    ref.result.then(
+      (notificacion: Notificacion) => {
+        this.notificacionesService.addNotificacion(notificacion);
+        this.notificaciones = this.notificacionesService.getNotificaciones();
+      },
+      (reason) => {}
+    );
   }
-  contactoEditado(contacto: Contacto): void {
-    this.contactosService.editarContacto(contacto);
-    this.contactos = this.contactosService.getContactos();
-    this.contactoElegido = this.contactos.find(c => c.id == contacto.id);
+  notificacionEditada(notificacion: Notificacion): void {
+    this.notificacionesService.editarNotificacion(notificacion);
+    this.notificaciones = this.notificacionesService.getNotificaciones();
+    this.notificacionElegida = this.notificaciones.find((c) => c.id == notificacion.id);
   }
 
-  eliminarContacto(id: number): void {
-    this.contactosService.eliminarcContacto(id);
-    this.contactos = this.contactosService.getContactos();
-    this.contactoElegido = undefined;
+  eliminarNotificacion(id: number): void {
+    this.notificacionesService.eliminarcNotificacion(id);
+    this.notificaciones = this.notificacionesService.getNotificaciones();
+    this.notificacionElegida = undefined;
   }
 }

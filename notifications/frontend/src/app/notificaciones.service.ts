@@ -6,12 +6,15 @@ import { Notificacion } from './notificacion';
 })
 export class NotificacionesService {
   private notificaciones: Notificacion [] = [
-    {id: 1, mensaje: 'Un 0', momentoRealEnvio: new Date ("2018-03-17")  },
-    {id: 1, mensaje: 'Un 0', momentoRealEnvio: new Date ("2018-03-17")  },
-    {id: 1, mensaje: 'Un 0', momentoRealEnvio: new Date ("2018-03-17")  },
+    {id: 1, mensaje: 'Time to drink!', momentoRealEnvio: "2018-03-17"  },
+    {id: 1, mensaje: 'Usage is up 20% this week', momentoRealEnvio: "2018-03-17"  },
+    {id: 1, mensaje: '1 Message', momentoRealEnvio: "2018-03-17"  },
   ];
 
   constructor() { }
+
+  // private baseURI: string = 'http://localhost:8080/notificaciones';
+  // constructor(private http: HttpClient) { }
 
   // Método para obtener todas las notificaciones
   public getNotificaciones(): Notificacion[] {

@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <h2>Detalles de {{notificacion?.id}}</h2>
+  </div>
+
+  <div class="row">
+    <label class="col-md-3" for="mensaje">Mensaje:</label>
+    <span class="col-md-9 offset-2 offset-md-0">{{notificacion?.mensaje}}</span>
+  </div>
+  <div class="row">
+    <label class="col-md-3" for="momentorealenvio">Momento real envio:</label>
+    <span class="col-md-9 offset-2 offset-md-0">{{notificacion?.
+      momentoRealEnvio}}</span>
+  </div>
+
+  <div class="row">
+    <button class="col-auto btn btn-outline-primary" (click)="eliminarNotificacion()">Eliminar <i
+        class="bi bi-trash-fill"></i></button>
+    <div class="col-1"></div>
+    <button class="col-auto btn btn-outline-primary" (click)="editarNotificacion()">Editar <i
+        class="bi bi-pencil-fill"></i></button>
+  </div>
+
+</div>
