@@ -1,35 +1,50 @@
 import { Injectable } from '@angular/core';
-import { Notificacion } from './notificacion';
+import { Corrector } from './corrector';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CorrectoresService {
-  private notificaciones: Notificacion [] = [
-    {id: 1, nombre: 'Paco', apellidos: 'Perez', correoElectronico: 'jpidsfipsf@gmail.com', telefono: '987564321', maxExamCorregir: 1, identificadorUsuario: 1  },
-    {id: 2, nombre: 'Luca', apellidos: 'Sanchez', correoElectronico: 'ajfhka@gmail.com', telefono: '987654321', maxExamCorregir: 1, identificadorUsuario: 2  },
-    {id: 0, nombre: 'Juan', apellidos: 'Jimenez', correoElectronico: 'hdshiuf@gmail.com', telefono: '912345678', maxExamCorregir: 2, identificadorUsuario: 0  },
+  private correctores: Corrector[] = [
+    {
+      id: 1,
+      nombre: 'Pedro',
+      apellido: 'Cinà',
+      correoElectronico: 'cina@gmail.com',
+      telefono: '3425490942',
+      maxExamCorregir: 3,
+      identificadorUsuario: 245242,
+      materia: {
+        id: 1,
+        nombre: 'Sistemas de Informacion para Internet',
+        anio: 2024,
+        idConvocatoria: 1,
+      },
+    },
   ];
 
-  constructor() { }
+  constructor() {}
 
-  // Método para obtener todas las notificaciones
+  // private baseURI: string = 'http://localhost:8080/correctores';
+  // constructor(private http: HttpClient) { }
+
+  // Método para obtener todas las correctores
   public getCorrectores(): Corrector[] {
     return this.correctores;
   }
-  
+
   addCorrector(corrector: Corrector) {
     corrector.id = this.correctores.length + 1;
     this.correctores.push(corrector);
   }
 
   editarCorrector(corrector: Corrector) {
-    let indice = this.correctores.findIndex(c => c.id == notificacion.id);
+    let indice = this.correctores.findIndex((c) => c.id == corrector.id);
     this.correctores[indice] = corrector;
   }
 
   eliminarCorrector(id: number) {
-    let indice = this.correctores.findIndex(c => c.id == id);
+    let indice = this.correctores.findIndex((c) => c.id == id);
     this.correctores.splice(indice, 1);
   }
 }

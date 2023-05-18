@@ -31,7 +31,7 @@ export class NotificacionesService {
     this.notificaciones[indice] = notificacion;
   }
 
-  eliminarcNotificacion(id: number) {
+  eliminarNotificacion(id: number) {
     let indice = this.notificaciones.findIndex(c => c.id == id);
     this.notificaciones.splice(indice, 1);
   }

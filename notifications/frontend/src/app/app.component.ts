@@ -49,7 +49,7 @@ export class AppComponent implements OnInit {
   }
 
   eliminarNotificacion(id: number): void {
-    this.notificacionesService.eliminarcNotificacion(id);
+    this.notificacionesService.eliminarNotificacion(id);
     this.notificaciones = this.notificacionesService.getNotificaciones();
     this.notificacionElegida = undefined;
   }

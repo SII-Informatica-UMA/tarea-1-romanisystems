@@ -1,23 +1,18 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <h1>Lista de correctores</h1>
+      <h1>Lista de Correctores ✍🏻</h1>
       <div class="list-group">
-        <button *ngFor="let corrector of correctores"
-          class="list-group-item list-group-item-action"
-          (click)="elegirCorrector(corrector)"
-          [class.active]="corrector === correctorElegido">{{corrector.nombre}}</button>
+        <button *ngFor="let corrector of correctores" class="list-group-item list-group-item-action"
+          (click)="elegirCorrector(corrector)" [class.active]="corrector === correctorElegido">{{corrector.nombre +
+          " " + corrector.apellido}}</button>
       </div>
       <br>
-      <button type="button" class="btn btn-outline-primary bi bi-plus-lg" (click)="aniadirContacto()"></button>
+      <button type="button" class="btn btn-outline-primary bi bi-plus-lg" (click)="aniadirCorrector()"></button>
     </div>
     <div class="col-md-6" *ngIf="correctorElegido">
-      <app-detalle-contacto [contacto]="correctorElegido"
-        (contactoEditado)="correctorEditado($event)"
-        (contactoEliminado)="eliminarCorrector($event)"
-        ></app-detalle-contacto>
+      <app-detalle-corrector [corrector]="correctorElegido" (correctorEditado)="correctorEditado($event)"
+        (correctorEliminado)="eliminarCorrector($event)"></app-detalle-corrector>
     </div>
   </div>
 </div>
-
-

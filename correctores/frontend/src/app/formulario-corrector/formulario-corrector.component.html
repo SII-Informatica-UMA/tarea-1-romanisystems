@@ -1,0 +1,33 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{accion}} corrector</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cierre usuario')"></button>
+</div>
+<div class="modal-body">
+  <div class="form-group">
+    <label for="nombre">Nombre:</label>
+    <input class="form-control" id="nombre" [(ngModel)]="corrector.nombre" placeholder="Nombre">
+    <label for="nombre">Apellido:</label>
+    <input class="form-control" id="apellido" [(ngModel)]="corrector.apellido" placeholder="Apellido">
+    <label for="nombre">Correo Electronico:</label>
+    <input class="form-control" id="correoElectronico" [(ngModel)]="corrector.correoElectronico"
+      placeholder="Correo Electronico">
+    <label for="nombre">Telefono:</label>
+    <input class="form-control" id="telefono" [(ngModel)]="corrector.telefono" placeholder="Telefono">
+    <label for="nombre">Max Examen Corregibiles:</label>
+    <input class="form-control" id="maxExamCorregir" [(ngModel)]="corrector.maxExamCorregir"
+      placeholder="Max Examen Corregibiles">
+    <label for="nombre">Identificador Usuario:</label>
+    <input class="form-control" id="identificadorUsuario" [(ngModel)]="corrector.identificadorUsuario"
+      placeholder="Identificador Usuario">
+    <label for="nombre">Nombre Materia:</label>
+    <input class="form-control" id="nombreMateria" [(ngModel)]="corrector.materia.nombre" placeholder="Nombre Materia">
+    <label for="nombre">Anio:</label>
+    <input class="form-control" id="anio" [(ngModel)]="corrector.materia.anio" placeholder="Anio">
+    <label for="nombre">ID Convocatoria:</label>
+    <input class="form-control" id="idConvocatoria" [(ngModel)]="corrector.materia.idConvocatoria"
+      placeholder="ID Convocatoria">
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="guardarCorrector()">Guardar</button>
+</div>

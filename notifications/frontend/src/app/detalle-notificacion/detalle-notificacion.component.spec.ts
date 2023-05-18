@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DetalleNotificacionComponent } from './detalle-notificacion.component';
 
-describe('DetalleNotificaComponent', () => {
+describe('DetalleNotificacionComponent', () => {
   let component: DetalleNotificacionComponent;
   let fixture: ComponentFixture<DetalleNotificacionComponent>;
 
